@@ -9,5 +9,6 @@
 <div class="container-md mt-4">
         @yield('content')
 </div>
+@yield('js')
 </body>
 </html>
