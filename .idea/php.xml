@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="S:/vendor/sebastian/recursion-context" />
+      <path value="S:/vendor/phpdocumentor/type-resolver" />
+      <path value="S:/vendor/sebastian/global-state" />
+      <path value="S:/vendor/phpdocumentor/reflection-docblock" />
+      <path value="S:/vendor/sebastian/object-reflector" />
+      <path value="S:/vendor/sebastian/object-enumerator" />
+      <path value="S:/vendor/phpdocumentor/reflection-common" />
+      <path value="S:/vendor/sebastian/type" />
+      <path value="S:/vendor/sebastian/diff" />
+      <path value="S:/vendor/nunomaduro/collision" />
+      <path value="S:/vendor/doctrine/inflector" />
+      <path value="S:/vendor/sebastian/comparator" />
+      <path value="S:/vendor/opis/closure" />
+      <path value="S:/vendor/doctrine/instantiator" />
+      <path value="S:/vendor/sebastian/version" />
+      <path value="S:/vendor/sebastian/exporter" />
+      <path value="S:/vendor/doctrine/lexer" />
+      <path value="S:/vendor/sebastian/environment" />
+      <path value="S:/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="S:/vendor/sebastian/resource-operations" />
+      <path value="S:/vendor/phar-io/version" />
+      <path value="S:/vendor/phar-io/manifest" />
+      <path value="S:/vendor/nikic/php-parser" />
+      <path value="S:/vendor/erusev/parsedown" />
+      <path value="S:/vendor/ramsey/uuid" />
+      <path value="S:/vendor/facade/flare-client-php" />
+      <path value="S:/vendor/facade/ignition-contracts" />
+      <path value="S:/vendor/swiftmailer/swiftmailer" />
+      <path value="S:/vendor/phpunit/php-timer" />
+      <path value="S:/vendor/facade/ignition" />
+      <path value="S:/vendor/phpunit/php-file-iterator" />
+      <path value="S:/vendor/phpunit/php-token-stream" />
+      <path value="S:/vendor/phpunit/php-text-template" />
+      <path value="S:/vendor/phpunit/phpunit" />
+      <path value="S:/vendor/phpunit/php-code-coverage" />
+      <path value="S:/vendor/nesbot/carbon" />
+      <path value="S:/vendor/symfony/process" />
+      <path value="S:/vendor/symfony/console" />
+      <path value="S:/vendor/symfony/service-contracts" />
+      <path value="S:/vendor/psy/psysh" />
+      <path value="S:/vendor/symfony/debug" />
+      <path value="S:/vendor/symfony/polyfill-iconv" />
+      <path value="S:/vendor/phpspec/prophecy" />
+      <path value="S:/vendor/symfony/mime" />
+      <path value="S:/vendor/symfony/polyfill-intl-idn" />
+      <path value="S:/vendor/hamcrest/hamcrest-php" />
+      <path value="S:/vendor/symfony/var-dumper" />
+      <path value="S:/vendor/laravel/framework" />
+      <path value="S:/vendor/symfony/polyfill-php73" />
+      <path value="S:/vendor/laravel/tinker" />
+      <path value="S:/vendor/symfony/polyfill-php72" />
+      <path value="S:/vendor/symfony/finder" />
+      <path value="S:/vendor/symfony/http-kernel" />
+      <path value="S:/vendor/symfony/css-selector" />
+      <path value="S:/vendor/symfony/routing" />
+      <path value="S:/vendor/symfony/event-dispatcher" />
+      <path value="S:/vendor/symfony/error-handler" />
+      <path value="S:/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="S:/vendor/symfony/translation" />
+      <path value="S:/vendor/symfony/polyfill-ctype" />
+      <path value="S:/vendor/symfony/event-dispatcher-contracts" />
+      <path value="S:/vendor/symfony/polyfill-mbstring" />
+      <path value="S:/vendor/symfony/translation-contracts" />
+      <path value="S:/vendor/symfony/http-foundation" />
+      <path value="S:/vendor/vlucas/phpdotenv" />
+      <path value="S:/vendor/composer" />
+      <path value="S:/vendor/dragonmantank/cron-expression" />
+      <path value="S:/vendor/webmozart/assert" />
+      <path value="S:/vendor/filp/whoops" />
+      <path value="S:/vendor/scrivo/highlight.php" />
+      <path value="S:/vendor/theseer/tokenizer" />
+      <path value="S:/vendor/fzaninotto/faker" />
+      <path value="S:/vendor/psr/log" />
+      <path value="S:/vendor/dnoegel/php-xdg-base-dir" />
+      <path value="S:/vendor/myclabs/deep-copy" />
+      <path value="S:/vendor/jakub-onderka/php-console-color" />
+      <path value="S:/vendor/psr/container" />
+      <path value="S:/vendor/fideloper/proxy" />
+      <path value="S:/vendor/jakub-onderka/php-console-highlighter" />
+      <path value="S:/vendor/mockery/mockery" />
+      <path value="S:/vendor/monolog/monolog" />
+      <path value="S:/vendor/psr/simple-cache" />
+      <path value="S:/vendor/egulias/email-validator" />
+      <path value="S:/vendor/paragonie/random_compat" />
+      <path value="S:/vendor/league/flysystem" />
+      <path value="S:/vendor/phpoption/phpoption" />
+      <path value="S:/vendor/hhxsv5/laravel-s" />
+      <path value="S:/vendor/swoole/ide-helper" />
+      <path value="S:/vendor/laravel/dusk" />
+      <path value="S:/vendor/predis/predis" />
+      <path value="S:/vendor/facebook/webdriver" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings load_method="CUSTOM_LOADER" configuration_file_path="S:/phpunit.xml" custom_loader_path="S:/vendor/autoload.php" use_configuration_file="true" />
+    </phpunit_settings>
+  </component>
+</project>
