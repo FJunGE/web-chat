@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container-md mt-4">
-        @yield('content')
+    @yield('content')
 </div>
 @yield('js')
 </body>

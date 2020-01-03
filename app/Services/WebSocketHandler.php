@@ -64,8 +64,25 @@ class WebSocketHandler implements WebSocketHandlerInterface {
         // frame->fd 客户端id frame->data 客服端发来的数据
         Log::info("从{$frame->fd} 收到一条消息: {$frame->data}");
 
-        $message = json_decode($frame->data);
-        if (empty($message->token) && !($user = User::query()->where('api_token', $message->token)->first())){
+        $info = json_decode($frame->data);
+        $server->push($frame->fd, "nihao ");
+
+
+        switch ($info->type)
+        {
+            case "ping":
+                break;
+
+            case "chatMessage":
+                if ($info->data->to->type = 'friend') {
+                    // 好友聊天
+                }else{
+                    // 群聊聊天
+                }
+
+        }
+
+        /*if (empty($message->token) && !($user = User::query()->where('api_token', $message->token)->first())){
             Log::warning("这个用户离线了: {$message->name} 不能参与聊天");
             $server->push($frame->fd, "这个用户离线了，聊个几把天");
         }else{
@@ -85,7 +102,7 @@ class WebSocketHandler implements WebSocketHandlerInterface {
                 // 向所有客户端广播事件
                 $server->push($fd, json_encode($frame->data));
             }
-        }
+        }*/
 
     }
 

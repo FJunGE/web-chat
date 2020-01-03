@@ -15,7 +15,7 @@
         </div>
         <div class="col-md-8">
             <div class="form-group">
-                <ul class="list-unstyled">
+                <ul class="list-unstyled" id="msg">
                     <li class="media">
                         <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1577944718482&di=e037adfbbf38f808b4784db8f539a44e&imgtype=jpg&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20190524%2F625e7a778d8041df82629db1c630c9e2.jpeg" width="50" height="50" class="align-self-start mr-3" alt="...">
                         <div class="media-body">
@@ -43,7 +43,7 @@
                 <form action="">
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1"><small>发送你要说的话</small></label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" id="chatMessageTextarea" rows="3"></textarea>
                     </div>
                     <button type="submit" class="btn btn-success">发送
                     </button>
@@ -51,4 +51,34 @@
             </div>
         </div>
      </div>
+@endsection
+@section('js')
+    <script>
+        var socket;
+        var ping;
+        socket = new WebSocket("ws://{{ env('LARAVELS_LISTEN_IP') }}:9501");
+        function sendMessage(socket, data){
+            socket.send(data);
+            console.log('当前状态'+socket.readyState);
+        }
+
+        socket.onopen = function () {
+            console.log('客户端连接中');
+            ping = setInterval(function () {
+                sendMessage(socket,'{"type":"ping"}');
+                console.log("ping...");
+            },1000 * 10)
+        }
+
+        var html = '';
+        var msg = document.getElementById('msg');
+        socket.onmessage = function (res) {
+
+        }
+
+        socket.onclose = function () {
+            console.log("已和服务端断开连接");
+            clearInterval(ping);
+        }
+    </script>
 @endsection

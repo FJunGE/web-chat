@@ -6,6 +6,8 @@
 
         <title>Laravel</title>
 
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
@@ -78,14 +80,28 @@
                     @endauth
                 </div>
             @endif
-            <div class="top-right links">
-                <a href="">聊天室</a>
-            </div>
             <div class="content">
                 <div class="title m-b-md">
                     Web Chat
                 </div>
-
+                <div>
+                    <div class="form-group">
+                        <form>
+                            <div class="form-group">
+                                <input placeholder="账号" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div class="form-group">
+                                <input placeholder="密码" type="password" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">去注册</button>
+                            <button type="submit" class="btn btn-success">登录</button>
+                        </form>
+                    </div>
+                </div>
                 {{--<div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
@@ -98,5 +114,6 @@
                 </div>--}}
             </div>
         </div>
+        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>
