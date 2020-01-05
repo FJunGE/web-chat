@@ -12,11 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
 Route::group(['middleware'=>'login'], function () use ($router){
-//    $router->get();
+    $router->get('chat', function () {
+        return view('pages.chat');
+    });
 });
-$router->get('chat', function () {
-    return view('pages.chat');
-});
+
+Route::post('register', 'AuthController@register')->name('register.store');
+Route::get('register', 'AuthController@register')->name('register.index');
+
+Route::post('login', 'AuthController@login')->name('auth.login');

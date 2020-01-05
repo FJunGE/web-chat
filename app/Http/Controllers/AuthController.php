@@ -13,35 +13,40 @@ class AuthController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api')->only('logout'); // 仅针对 logout
+
     }
 
-    public function register(Request $request) {
-        Validator::make($request->all(), [
-            'name' => ['required', 'string', 'min:3'],
-            'email' =>  ['required', 'email'],
-            'password' => ['required'],
-        ])->validate();
+    public function register(Request $request)
+    {
+        if ($request->isMethod('POST')){
+            $request->validate([
+                'name' => 'required|unique:users',
+                'username' => 'required',
+                'password' => 'required'
+            ]);
+            $user = User::create([
+                'name'  =>  $request->input('name'),
+                'username'  =>  $request->input('username'),
+                'password'  =>  password_hash($request->input('password'),PASSWORD_DEFAULT),
+                'api_token' => Str::random(60),
+            ]);
+            return $user;
 
-        $user = User::create([
-            'name'  =>  $request->input('name'),
-            'email'  =>  $request->input('email'),
-            'password'  =>  Hash::make($request->input('password')),
-            'api_token' => Str::random(60),
-        ]);
+        }else{
+            return view('auth.register');
+        }
 
-        return $user;
     }
 
     public function login(Request $request)
     {
 
         $request->validate([
-            'email' =>  'required|string',
+            'username' =>  'required|string',
             'password'  =>  'required',
         ]);
 
-        $user = User::where('email', $request->input('email'))->first();
+        $user = User::where('username', $request->input('username'))->first();
         if ($user && Hash::check($request->input('password'), $user->password)){
             // 每次登录成功重新替换token值
             $user->api_token = Str::random(60);
@@ -50,7 +55,7 @@ class AuthController extends Controller
             return response()->json(['user' => $user, 'success'=>true]);
         }
 
-        return response()->json(['user' => $user, 'success'=>false]);
+        return view('index');
     }
 
     public function logout(Request $request)
@@ -61,9 +66,5 @@ class AuthController extends Controller
         $user->save();
         Auth::logout(); //
         return response()->json(['success'=>true]);
-    }
-    public function test()
-    {
-        return 1231231;
     }
 }
