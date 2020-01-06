@@ -85,6 +85,13 @@
                     Web Chat
                 </div>
                 <div>
+                    <div>
+                        <ul class="alert">
+                            @foreach($errors->all() as $error )
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                     <div class="form-group">
                         @yield('form')
                     </div>

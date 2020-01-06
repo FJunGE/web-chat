@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('layouts.app')
 @section('content')
 
      <div class="row">
@@ -45,8 +45,8 @@
                         <label for="exampleFormControlTextarea1"><small>发送你要说的话</small></label>
                         <textarea class="form-control" id="chatMessageTextarea" rows="3"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-success">发送
-                    </button>
+                    <button type="submit" class="btn btn-success">发送</button>
+                    <a href="{{ route('logout') }}" class="btn btn-danger">切换用户</a>
                 </form>
             </div>
         </div>

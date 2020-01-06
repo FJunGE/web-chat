@@ -16,6 +16,11 @@ class AuthController extends Controller
 
     }
 
+    protected function guard()
+    {
+        return Auth::guard();
+    }
+
     public function register(Request $request)
     {
         if ($request->isMethod('POST')){
@@ -30,7 +35,9 @@ class AuthController extends Controller
                 'password'  =>  password_hash($request->input('password'),PASSWORD_DEFAULT),
                 'api_token' => Str::random(60),
             ]);
-            return $user;
+
+            // 注册玩自动登录
+            Auth::login($user);
 
         }else{
             return view('auth.register');
@@ -40,22 +47,19 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-
         $request->validate([
-            'username' =>  'required|string',
+            'username' =>  'required',
             'password'  =>  'required',
         ]);
 
-        $user = User::where('username', $request->input('username'))->first();
-        if ($user && Hash::check($request->input('password'), $user->password)){
-            // 每次登录成功重新替换token值
-            $user->api_token = Str::random(60);
-            $user->save();
-
-            return response()->json(['user' => $user, 'success'=>true]);
+        $credentials = $request->only('username', 'password');
+        if (Auth::attempt($credentials)) {
+            session()->flush('success', '登录成功');
+            return redirect()->route('chat.index');
+        }else{
+            session()->flush('falid', '操作失败');
         }
 
-        return view('index');
     }
 
     public function logout(Request $request)
@@ -65,6 +69,6 @@ class AuthController extends Controller
         $user->apt_token = null;
         $user->save();
         Auth::logout(); //
-        return response()->json(['success'=>true]);
+        return redirect('/');
     }
 }
