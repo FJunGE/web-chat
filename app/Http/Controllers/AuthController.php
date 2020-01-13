@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -47,28 +47,33 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $request->validate([
-            'username' =>  'required',
-            'password'  =>  'required',
-        ]);
+        if ($request->isMethod('post')){
+            $request->validate([
+                'username' =>  'required',
+                'password'  =>  'required',
+            ]);
 
-        $credentials = $request->only('username', 'password');
-        if (Auth::attempt($credentials)) {
-            session()->flush('success', '登录成功');
-            return redirect()->route('chat.index');
+            $credentials = $request->only('username', 'password');
+            if (Auth::attempt($credentials)) {
+                // 更新用户状态
+                User::query()->where('id', Auth::id())->update(['status' => User::USER_STATUS_ONLINE, 'api_token' => Str::random(60)]);
+                return redirect()->route('chat.index');
+            }else{
+                session()->flush('falid', '操作失败');
+            }
         }else{
-            session()->flush('falid', '操作失败');
+            return view('auth.login');
         }
-
     }
 
     public function logout(Request $request)
     {
-        $user = Auth::guard('auth:api')->user();//获取通过auth:api验证用户的
-        User::find($user->id);
-        $user->apt_token = null;
+        $user = User::where('id', Auth::id())->first();
+        $user->api_token = null;
+        $user->status = User::USER_STATUS_OFFLINE;
         $user->save();
-        Auth::logout(); //
+        Auth::logout();
+        session()->flush('success', '切换账号成功');
         return redirect('/');
     }
 }

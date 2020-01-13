@@ -3,15 +3,7 @@
 
      <div class="row">
         <div class="col-md-3">
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action">
-                    作者
-                    <span class="badge badge-primary badge-pill">2</span>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">前端工程师</a>
-                <a href="#" class="list-group-item list-group-item-action">后端工程师</a>
-                <a href="#" class="list-group-item list-group-item-action">产品经理</a>
-            </div>
+            @include('lists.userList', ['users'=>$users])
         </div>
         <div class="col-md-8">
             <div class="form-group">
@@ -42,7 +34,7 @@
 
                 <form action="">
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1"><small>发送你要说的话</small></label>
+                        <label for="exampleFormControlTextarea1"><small>我是 <b>{{ Auth::user()->name }}</b> :</small></label>
                         <textarea class="form-control" id="chatMessageTextarea" rows="3"></textarea>
                     </div>
                     <button type="submit" class="btn btn-success">发送</button>
